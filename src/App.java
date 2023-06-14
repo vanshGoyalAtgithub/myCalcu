@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 
-import javax.swing.GrayFilter;
+
 
 class App extends WindowAdapter implements ActionListener {
     Frame f;
@@ -12,7 +12,7 @@ class App extends WindowAdapter implements ActionListener {
     double num1, num2, check;
 
     App() {
-        f = new Frame("my calculater");
+        f = new Frame("vansh/'s calcu");
         l1 = new Label();
         l1.setBackground(Color.LIGHT_GRAY);
         l1.setBounds(50, 50, 260, 60);
@@ -54,7 +54,7 @@ class App extends WindowAdapter implements ActionListener {
         bsubb.setBounds(260,270,50,50);
         bpts = new Button(".");
         bpts.setBounds(180,410,50,50);
-        bback = new Button("back");
+        bback = new Button("delete");
         bback.setBounds(130, 130, 50, 50);
         bclr.setBounds(50, 130, 65, 50);
         b1.addActionListener(this);
@@ -110,6 +110,7 @@ class App extends WindowAdapter implements ActionListener {
 
     public void windowClosing(WindowEvent e) {
         f.dispose();
+
     }
 
     @Override
@@ -119,66 +120,83 @@ class App extends WindowAdapter implements ActionListener {
             zt = l1.getText();
             z = zt + "1";
             l1.setText(z);
+            print("b1");
+            
         }
         if (e.getSource() == b2) {
             zt = l1.getText();
             z = zt + "2";
             l1.setText(z);
+            print("b2");
         }
         if (e.getSource() == b3) {
             zt = l1.getText();
             z = zt + "3";
             l1.setText(z);
+            print("b3");
+
+            
         }
         if (e.getSource() == b4) {
             zt = l1.getText();
             z = zt + "4";
             l1.setText(z);
+            print("b4");
         }
         if (e.getSource() == b5) {
             zt = l1.getText();
             z = zt + "5";
             l1.setText(z);
+            print("b5");
         }
         if (e.getSource() == b6) {
             zt = l1.getText();
             z = zt + "6";
             l1.setText(z);
+            print("b6");
         }
         if (e.getSource() == b7) {
             zt = l1.getText();
             z = zt + "7";
             l1.setText(z);
+            print("b7");
         }
         if (e.getSource() == b8) {
             zt = l1.getText();
             z = zt + "8";
             l1.setText(z);
+            print("b8");
         }
         if (e.getSource() == b9) {
             zt = l1.getText();
             z = zt + "9";
             l1.setText(z);
+            print("b9");
         }
         if (e.getSource() == b0) {
             zt = l1.getText();
             z = zt + "0";
             l1.setText(z);
+            print("b0");
         }
         if (e.getSource() == bpts) {
             zt = l1.getText();
             z = zt + ".";
             l1.setText(z);
+            print("bpts is ");
 
         }
         // back button functionality
         if (e.getSource() == bback) {
             zt = l1.getText();
+            print("bback is ");
             try {
                 z = zt.substring(0, zt.length() - 1);
+                l1.setText(z);
+                
 
             } catch (StringIndexOutOfBoundsException f) {
-                l1.setText(z);
+               print(e + " is occured in function bback functionality");
             }
 
         }
@@ -187,16 +205,18 @@ class App extends WindowAdapter implements ActionListener {
             zt = l1.getText();
             z = "-" + zt;
             l1.setText(z);
+            print("bnegg is ");
         }
         // add button functionality
-        // here i could not under stand that why zis taken as " "
+       
         if (e.getSource() == badd) {
-
+            print("badd is ");
             try {
                 num1 = Double.parseDouble(l1.getText());
+                
 
             } catch (NumberFormatException f) {
-                l1.setText("invalid formate");
+                l1.setText("invalid formate ");
                 return;
             }
             z = " ";
@@ -220,6 +240,7 @@ class App extends WindowAdapter implements ActionListener {
         }
         // for multipication
         if (e.getSource() == bmult) {
+            print("bmult is ");
             try {
                 num1 = Double.parseDouble(l1.getText());
 
@@ -229,10 +250,12 @@ class App extends WindowAdapter implements ActionListener {
 
             }
             z = " ";
+            l1.setText(z);
             check = 3;
         }
         // for division
         if (e.getSource() == bdiv) {
+            print("bdiv is");
             try {
                 num1 = Double.parseDouble(l1.getText());
 
@@ -242,10 +265,12 @@ class App extends WindowAdapter implements ActionListener {
 
             }
             z = " ";
+            l1.setText(z);
             check = 4;
         }
         // for mod
         if (e.getSource() == bmod) {
+            print("bmod is");
             try {
                 num1 = Double.parseDouble(l1.getText());
 
@@ -255,6 +280,7 @@ class App extends WindowAdapter implements ActionListener {
 
             }
             z = " ";
+            l1.setText(z);
             check = 5;
         }
         // for result
@@ -264,8 +290,9 @@ class App extends WindowAdapter implements ActionListener {
 
             } catch (Exception f) {
                 l1.setText("Enter number first");
-                return;
-
+                print(f + "");
+                return; //why this return is here 
+            
             }
             if (check == 1)
                 xd = num1 + num2;
@@ -275,18 +302,25 @@ class App extends WindowAdapter implements ActionListener {
                 xd = num1 * num2;
             if (check == 4)
                 xd = num1 / num2;
-            if (check == 5) {
+            if (check == 5) 
                 xd = num1 % num2;
-                l1.setText(String.valueOf(xd));
-            }
-            if (e.getSource() == bclr)
-                num1 = 0;
-            num2 = 0;
-            check = 0;
-            xd = 0;
-            z = " ";
-            l1.setText(z);
+                
+                print(String.valueOf(xd));
+                l1.setText(xd+ "");
+          
         }
+        if (e.getSource() == bclr){
+            num1 = 0;
+        num2 = 0;
+        check = 0;
+        xd = 0;
+        z = " ";
+        l1.setText(z);
+        }
+    }
+
+    void print(String str){
+        System.out.println(str +" ");
     }
 
 }
